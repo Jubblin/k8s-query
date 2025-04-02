@@ -1,0 +1,21 @@
+{
+  "name": "Kubernetes Query Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.go", "ms-kubernetes-tools.vscode-kubernetes-tools", "direnv"]
+    }
+  },
+  "remoteUser": "vscode",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localEnv:HOME}/.kube,target=/home/vscode/.kube,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "go mod tidy",
+  "remoteEnv": {
+    "GOPATH": "/home/vscode/go"
+  }
+}
